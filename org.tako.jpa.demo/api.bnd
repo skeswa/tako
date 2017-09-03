@@ -1,0 +1,4 @@
+Export-Package: \
+	org.tako.jpa.demo.api.model,\
+	org.tako.jpa.demo.api.dao
+Bundle-Version: 1.0.0.${tstamp}
