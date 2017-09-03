@@ -86,9 +86,12 @@
 	org.tako.jpa.core.impl.service;version=latest,\
 	org.tako.jpa.core.model;version=latest,\
 	,\
-	org.tako.jpa.demo.api;version=latest,\
-	org.tako.jpa.demo.dao.impl;version=latest,\
-	org.tako.jpa.demo.model.persistence.openjpa.jpa2_0;version=latest
+	org.tako.jpa.demo.feed.api;version=latest,\
+	org.tako.jpa.demo.feed.dao.impl;version=latest,\
+	org.tako.jpa.demo.feed.persistence.openjpa.jpa2_0;version=latest,\
+	,\
+	org.tako.jpa.demo.content.api;version=latest,\
+	org.tako.jpa.demo.content.persistence.openjpa.jpa2_0;version=latest	
 ## Uncomment if you need to change the HTTP port
 #-runproperties: org.osgi.service.http.port=8080
 -runproperties: \

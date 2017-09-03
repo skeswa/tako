@@ -1,12 +1,12 @@
-package org.tako.jpa.demo.api.dao;
+package org.tako.jpa.demo.feed.api.dao;
 
 import java.util.List;
 
 import org.tako.jpa.core.api.ApplicationException;
 import org.tako.jpa.core.api.dao.NoSuchModelException;
 import org.tako.jpa.core.api.service.IBaseService;
-import org.tako.jpa.demo.api.model.Feed;
-import org.tako.jpa.demo.api.model.Post;
+import org.tako.jpa.demo.feed.api.model.Feed;
+import org.tako.jpa.demo.feed.api.model.Post;
 
 public interface IFeedDAOService extends IBaseService {
 	public List<Feed> findAll(int start, int end) throws ApplicationException;

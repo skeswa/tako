@@ -1,4 +1,4 @@
-package org.tako.jpa.demo.model.jpa.osgi;
+package org.tako.jpa.demo.feed.model.jpa.osgi;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;

@@ -11,11 +11,11 @@ import org.tako.jpa.core.commons.util.Validator;
 import org.tako.jpa.core.commons.util.jpa.JPAEntityUtil;
 import org.tako.jpa.core.model.JPABaseEntity;
 import org.tako.jpa.core.service.impl.BaseServiceImpl;
-import org.tako.jpa.demo.api.dao.IFeedDAOService;
-import org.tako.jpa.demo.api.model.Feed;
-import org.tako.jpa.demo.api.model.Post;
-import org.tako.jpa.demo.model.jpa.JPAFeed;
-import org.tako.jpa.demo.model.jpa.JPAPost;
+import org.tako.jpa.demo.feed.api.dao.IFeedDAOService;
+import org.tako.jpa.demo.feed.api.model.Feed;
+import org.tako.jpa.demo.feed.api.model.Post;
+import org.tako.jpa.demo.feed.model.jpa.JPAFeed;
+import org.tako.jpa.demo.feed.model.jpa.JPAPost;
 
 @SuppressWarnings("restriction")
 @Transactional

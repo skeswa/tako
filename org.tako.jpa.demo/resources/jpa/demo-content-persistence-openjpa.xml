@@ -45,8 +45,7 @@
         <class>org.tako.jpa.core.model.JPABaseEntity</class>
         
     	
-    		<class>org.tako.jpa.demo.model.jpa.JPAFeed</class>
-    		<class>org.tako.jpa.demo.model.jpa.JPAPost</class>
+    		<class>org.tako.jpa.demo.content.model.jpa.JPAComment</class>
    		  	
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>  

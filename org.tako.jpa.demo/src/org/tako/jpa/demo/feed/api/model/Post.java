@@ -1,4 +1,4 @@
-package org.tako.jpa.demo.api.model;
+package org.tako.jpa.demo.feed.api.model;
 
 import java.io.Serializable;
 
@@ -6,17 +6,20 @@ import org.tako.jpa.core.model.BaseEntity;
 
 
 public class Post extends BaseEntity implements Serializable {
-	
+	private static final long serialVersionUID = -5135269128249876038L;
+
 	private Long linkId;
 	
 	private Feed feed;
 	
 	public Post() {
+		super();
 	}
 	
-	public Post(final String name, final String code) {
+	public Post(final String name, final String description) {
+		this();
 		this.name = name;
-		this.code = code;
+		this.description = description;
 	}
 
 	public Long getLinkId() {

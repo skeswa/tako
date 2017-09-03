@@ -1,4 +1,4 @@
-package org.tako.jpa.demo.model.jpa;
+package org.tako.jpa.demo.feed.model.jpa;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -20,5 +20,16 @@ import org.tako.jpa.core.model.JPABaseEntity;
 public class JPAFeed extends JPABaseEntity implements Serializable {
 	private static final long serialVersionUID = -8154233623279419488L;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="feed")
-	private Set<JPAPost> questions = new java.util.HashSet<JPAPost>();
+	private Set<JPAPost> posts = new java.util.HashSet<JPAPost>();
+	
+	public JPAFeed() {
+		super();
+	}
+	
+	public Set<JPAPost> getPosts() {
+		return posts;
+	}
+	public void setPosts(Set<JPAPost> posts) {
+		this.posts = posts;
+	}
 }

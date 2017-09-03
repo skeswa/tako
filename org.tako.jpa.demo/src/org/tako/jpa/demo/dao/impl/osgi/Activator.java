@@ -9,8 +9,8 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.log.LogService;
-import org.tako.jpa.demo.api.dao.IFeedDAOService;
 import org.tako.jpa.demo.dao.impl.FeedDAOImpl;
+import org.tako.jpa.demo.feed.api.dao.IFeedDAOService;
 
 public class Activator extends DependencyActivatorBase {
 
