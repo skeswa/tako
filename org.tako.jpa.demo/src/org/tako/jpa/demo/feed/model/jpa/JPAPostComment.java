@@ -14,7 +14,7 @@ import org.tako.jpa.core.model.JPABaseEntity;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@Table(name="tako_demo_post")
+@Table(name="tako_demo_feed_comment")
 public class JPAPostComment extends JPABaseEntity implements Serializable {
 	private static final long serialVersionUID = 8538105534304495532L;
 	

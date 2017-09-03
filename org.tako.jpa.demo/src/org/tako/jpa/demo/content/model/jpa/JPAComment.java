@@ -11,7 +11,7 @@ import org.tako.jpa.core.model.JPABaseEntity;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@Table(name="tk_demo_comment")
+@Table(name="tk_demo_content_comment")
 public class JPAComment extends JPABaseEntity implements Serializable {
 	private static final long serialVersionUID = -762904109277081158L;
 }
