@@ -1,0 +1,11 @@
+Include-Resource: @jars/graphql-java-4.1.jar
+-exportcontents:  graphql	
+Export-Package: graphql.*;version=4.1.0
+Bundle-Version: 4.1.0.${tstamp}
+DynamicImport-Package: *
+Import-Package: org.antlr.v4.runtime;version=4.7,\
+	org.antlr.v4.runtime.atn;version=4.7,\
+	org.antlr.v4.runtime.dfa;version=4.7,\
+	org.antlr.v4.runtime.misc;version=4.7,\
+	org.antlr.v4.runtime.tree;version=4.7,\
+	org.slf4j
