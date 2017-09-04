@@ -33,10 +33,10 @@ public class JPAPost extends JPABaseEntity implements Serializable {
 		super();
 	}
 
-	public JPAPost(String name, String code, Long linkId) {
+	public JPAPost(String name, String description) {
 		this();
 		this.name = name;
-		this.code = code;
+		this.code = description;
 	}
 
 	public JPAFeed getFeed() {
@@ -48,6 +48,8 @@ public class JPAPost extends JPABaseEntity implements Serializable {
 	}
 
 	public Set<JPAPostComment> getComments() {
+		if (comments == null)
+			comments = new java.util.HashSet<JPAPostComment>();
 		return comments;
 	}
 

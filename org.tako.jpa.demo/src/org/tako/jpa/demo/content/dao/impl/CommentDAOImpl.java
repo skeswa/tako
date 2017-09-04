@@ -50,6 +50,19 @@ public class CommentDAOImpl extends BaseServiceImpl implements ICommentDAOServic
 		return result;		
 	}
 	
+	@Override
+	public List<Comment> findAll() throws ApplicationException {
+		List<Comment> result = new ArrayList<>();
+		try {
+			List<JPABaseEntity> resultList = super.findAll(JPAComment.class);
+			result = JPAEntityUtil.copy(resultList, Comment.class);
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		return result;		
+	}
+	
 	
 	
 	@Override
@@ -107,6 +120,24 @@ public class CommentDAOImpl extends BaseServiceImpl implements ICommentDAOServic
 		return JPAEntityUtil.copy(jpaEntity, Comment.class);
 	}
 	
+	
+	@Override
+	public void removeAll() throws ApplicationException, NoSuchModelException {
+		List<Comment> comments = findAll();
+		comments.stream()
+			.forEach(c -> {
+				try {
+					JPAComment jpaEntity = (JPAComment) super.findByPrimaryKey(JPAComment.class, c.getId());
+					super.remove(jpaEntity);
+				} catch (ApplicationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchModelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+	}	
 
 	
 	@Override

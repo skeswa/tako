@@ -1,8 +1,10 @@
 package org.tako.jpa.demo.feed.api.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import org.tako.jpa.core.model.BaseEntity;
+import org.tako.jpa.demo.feed.model.jpa.JPAPostComment;
 
 
 public class Post extends BaseEntity implements Serializable {
@@ -11,6 +13,8 @@ public class Post extends BaseEntity implements Serializable {
 	private Long linkId;
 	
 	private Feed feed;
+	
+	private Set<PostComment> comments = new java.util.HashSet<PostComment>();
 	
 	public Post() {
 		super();
@@ -36,5 +40,13 @@ public class Post extends BaseEntity implements Serializable {
 
 	public void setFeed(Feed feed) {
 		this.feed = feed;
+	}
+
+	public Set<PostComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<PostComment> comments) {
+		this.comments = comments;
 	}
 }

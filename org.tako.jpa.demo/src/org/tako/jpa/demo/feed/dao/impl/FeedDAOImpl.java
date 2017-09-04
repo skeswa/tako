@@ -11,11 +11,15 @@ import org.tako.jpa.core.commons.util.Validator;
 import org.tako.jpa.core.commons.util.jpa.JPAEntityUtil;
 import org.tako.jpa.core.model.JPABaseEntity;
 import org.tako.jpa.core.service.impl.BaseServiceImpl;
+import org.tako.jpa.demo.content.api.model.Comment;
+import org.tako.jpa.demo.content.model.jpa.JPAComment;
 import org.tako.jpa.demo.feed.api.dao.IFeedDAOService;
 import org.tako.jpa.demo.feed.api.model.Feed;
 import org.tako.jpa.demo.feed.api.model.Post;
+import org.tako.jpa.demo.feed.api.model.PostComment;
 import org.tako.jpa.demo.feed.model.jpa.JPAFeed;
 import org.tako.jpa.demo.feed.model.jpa.JPAPost;
+import org.tako.jpa.demo.feed.model.jpa.JPAPostComment;
 
 @SuppressWarnings("restriction")
 @Transactional
@@ -43,6 +47,18 @@ public class FeedDAOImpl extends BaseServiceImpl implements IFeedDAOService {
 		List<Feed> result = new ArrayList<>();
 		try {
 			List<JPABaseEntity> resultList = super.findAll(JPAFeed.class,start,end);
+			result = JPAEntityUtil.copy(resultList, Feed.class);
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		return result;		
+	}
+	
+	public List<Feed> findAll() throws ApplicationException {
+		List<Feed> result = new ArrayList<>();
+		try {
+			List<JPABaseEntity> resultList = super.findAll(JPAFeed.class);
 			result = JPAEntityUtil.copy(resultList, Feed.class);
 		}
 		catch (Exception e) {
@@ -108,7 +124,23 @@ public class FeedDAOImpl extends BaseServiceImpl implements IFeedDAOService {
 		return JPAEntityUtil.copy(jpaEntity, Feed.class);
 	}
 	
-
+	@Override
+	public void removeAll() throws ApplicationException, NoSuchModelException {
+		List<Feed> comments = findAll();
+		comments.stream()
+			.forEach(c -> {
+				try {
+					JPAFeed jpaEntity = (JPAFeed) super.findByPrimaryKey(JPAFeed.class, c.getId());
+					super.remove(jpaEntity);
+				} catch (ApplicationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchModelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+	}	
 	
 	@Override
 	public Feed getByCode(String code) throws ApplicationException {
@@ -121,6 +153,15 @@ public class FeedDAOImpl extends BaseServiceImpl implements IFeedDAOService {
 	public Feed getByName(String name) throws ApplicationException {
 		JPAFeed jpaEntity = (JPAFeed) super.findWithAttribute(JPAFeed.class, String.class,"name", name);
 		return JPAEntityUtil.copy(jpaEntity, Feed.class);
+	}
+	
+	@Override
+	public Post addPostToFeed(Feed record, Post post) throws ApplicationException, NoSuchModelException {
+		JPAFeed feed = getByPrimary_(record.getId());
+		JPAPost postEntity = JPAEntityUtil.copy(post, JPAPost.class);
+		postEntity.setFeed(feed);
+		feed.getPosts().add(postEntity);
+		return JPAEntityUtil.copy(postEntity, Post.class);
 	}
 	
 	//-- Posts
@@ -202,11 +243,23 @@ public class FeedDAOImpl extends BaseServiceImpl implements IFeedDAOService {
 		return JPAEntityUtil.copy(jpaEntity, Post.class);
 	}
 
+	public JPAPost getPostByCode_(String code) throws ApplicationException {
+		return (JPAPost) super.findWithAttribute(JPAPost.class, String.class,"code", code);
+	}
 
 	@Override
 	public Post getPostByName(String name) throws ApplicationException {
 		JPAPost jpaEntity = (JPAPost) super.findWithAttribute(JPAPost.class, String.class,"name", name);
 		return JPAEntityUtil.copy(jpaEntity, Post.class);
+	}
+	
+	@Override
+	public PostComment addCommentToPost(Post post, PostComment comment) throws ApplicationException, NoSuchModelException {
+		JPAPost postEntity = getPostByCode_(post.getCode());
+		JPAPostComment commentEntity = JPAEntityUtil.copy(comment, JPAPostComment.class);
+		commentEntity.setPost(postEntity);
+		postEntity.getComments().add(commentEntity);
+		return JPAEntityUtil.copy(commentEntity, PostComment.class);
 	}
 	
 	@Override

@@ -14,13 +14,13 @@ import org.tako.jpa.core.model.JPABaseEntity;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@Table(name="tako_demo_feed_comment")
+@Table(name="tako_demo_feed_comment_a")
 public class JPAPostComment extends JPABaseEntity implements Serializable {
 	private static final long serialVersionUID = 8538105534304495532L;
 	
-	@ManyToOne(targetEntity = JPAFeed.class)
+	@ManyToOne(targetEntity = JPAPost.class)
 	@JoinColumn
-	private JPAFeed feed;
+	private JPAPost post;
 
 	private Long commentId;
 	
@@ -29,19 +29,19 @@ public class JPAPostComment extends JPABaseEntity implements Serializable {
 		super();
 	}
 
-	public JPAPostComment(String name, String code, Long commentId) {
+	public JPAPostComment(String name, String description, Long commentId) {
 		this();
 		this.name = name;
-		this.code = code;
+		this.description = description;
 		this.commentId = commentId;
 	}
 
-	public JPAFeed getFeed() {
-		return feed;
+	public JPAPost getPost() {
+		return post;
 	}
 
-	public void setFeed(JPAFeed feed) {
-		this.feed = feed;
+	public void setPost(JPAPost post) {
+		this.post = post;
 	}
 
 	public Long getCommentId() {

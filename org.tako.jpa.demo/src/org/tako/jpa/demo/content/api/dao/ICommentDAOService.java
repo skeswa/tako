@@ -10,6 +10,8 @@ import org.tako.jpa.demo.content.api.model.Comment;
 public interface ICommentDAOService extends IBaseService {
 	public List<Comment> findAll(int start, int end) throws ApplicationException;
 	
+	public List<Comment> findAll() throws ApplicationException ;
+	
 	public long countAll() throws ApplicationException;
 	
 	public Comment provide(Comment record) throws ApplicationException, NoSuchModelException;
@@ -17,6 +19,8 @@ public interface ICommentDAOService extends IBaseService {
 	public Comment update(Comment record) throws ApplicationException, NoSuchModelException;
 	
 	public Comment delete(Long id) throws ApplicationException, NoSuchModelException;
+	
+	public void removeAll() throws ApplicationException, NoSuchModelException;
 	
 	public Comment getByPrimary(Long pk) throws ApplicationException, NoSuchModelException;
 
