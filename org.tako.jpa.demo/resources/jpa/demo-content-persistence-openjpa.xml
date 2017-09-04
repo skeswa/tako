@@ -29,7 +29,7 @@
     <!-- JTA                                                                 -->
     <!-- ******************************************************************* -->
 
-    <persistence-unit name="tako_demo" transaction-type="JTA">
+    <persistence-unit name="tako_demo_content" transaction-type="JTA">
 		<jta-data-source>
 			<![CDATA[
 			osgi:javax.sql.DataSource/(name=jta)

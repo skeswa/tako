@@ -14,6 +14,7 @@ public class Comment extends BaseEntity implements Serializable {
 	
 	public Comment(final String name, final String description) {
 		this();
+		this.name = name;
 		this.description = description;
 	}
 }

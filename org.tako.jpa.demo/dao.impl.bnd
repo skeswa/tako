@@ -1,5 +1,0 @@
-Bundle-Version: 1.0.0.${tstamp}
-Private-Package: \
-	org.tako.jpa.demo.dao.impl,\
-	org.tako.jpa.demo.dao.impl.osgi
-Bundle-Activator: org.tako.jpa.demo.dao.impl.osgi.Activator

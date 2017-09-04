@@ -1,4 +1,4 @@
-package org.tako.jpa.demo.dao.impl;
+package org.tako.jpa.demo.feed.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
